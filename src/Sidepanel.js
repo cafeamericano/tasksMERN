@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class MyComp extends Component {
+class Sidepanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +13,7 @@ class MyComp extends Component {
   }
 
   performSearch() {
-    let url = "/api";
+    let url = "/userlists";
     fetch(url)
       .then(response => response.json())
       .then(results => {
@@ -26,7 +26,7 @@ class MyComp extends Component {
 
   drawToDOM = (argObj) => (
     <div>
-      {argObj.name} {argObj.color}
+      {argObj.listName}
     </div>
   )
 
@@ -36,4 +36,4 @@ class MyComp extends Component {
   }
 }
 
-export default MyComp;
+export default Sidepanel;
