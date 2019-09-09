@@ -22,16 +22,16 @@ class Sidepanel extends Component {
           databaseRecords: results
         });
       });
-  };
+  }
 
-  drawToDOM = (argObj) => (
-    <div>
+  drawToDOM = argObj => (
+    <div onClick={() => this.props.makeActiveList(argObj.listName)}>
       {argObj.listName}
     </div>
-  )
+  );
 
   render() {
-    var items = this.state.databaseRecords
+    var items = this.state.databaseRecords;
     return <div>{items.map(this.drawToDOM)}</div>;
   }
 }

@@ -22,17 +22,22 @@ class Taskbox extends Component {
           databaseRecords: results
         });
       });
-  };
+  }
 
-  drawToDOM = (argObj) => (
+  drawToDOM = argObj => (
     <div>
-      {argObj.taskName} | {argObj.associatedList}
+      <input type="checkbox" /> {argObj.taskName} | {argObj.associatedList}
     </div>
-  )
+  );
 
   render() {
-    var items = this.state.databaseRecords
-    return <div>{items.map(this.drawToDOM)}</div>;
+    var items = this.state.databaseRecords;
+    return (
+      <div>
+        {this.props.activeList}
+        <div>{items.map(this.drawToDOM)}</div>
+      </div>
+    );
   }
 }
 
