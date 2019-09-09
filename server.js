@@ -10,13 +10,21 @@ let userLists = [
 ];
 
 let userTasks = [
-  { taskName: "Clean countertops", associatedList: "Household" },
-  { taskName: "Wash clothes", associatedList: "Household" },
-  { taskName: "Vacuum living room", associatedList: "Household" },
-  { taskName: "Eggs", associatedList: "Groceries" },
-  { taskName: "Milk", associatedList: "Groceries" },
-  { taskName: "Electricity", associatedList: "Bills" },
-  { taskName: "Apple Music", associatedList: "Bills" }
+  {
+    taskName: "Clean countertops",
+    associatedList: "Household",
+    completed: false
+  },
+  { taskName: "Wash clothes", associatedList: "Household", completed: false },
+  {
+    taskName: "Vacuum living room",
+    associatedList: "Household",
+    completed: false
+  },
+  { taskName: "Eggs", associatedList: "Groceries", completed: false },
+  { taskName: "Milk", associatedList: "Groceries", completed: true },
+  { taskName: "Electricity", associatedList: "Bills", completed: false },
+  { taskName: "Apple Music", associatedList: "Bills", completed: false }
 ];
 
 app.get("/userlists", function(req, res) {

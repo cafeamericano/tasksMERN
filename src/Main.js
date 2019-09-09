@@ -18,8 +18,8 @@ class Main extends Component {
   render() {
     return (
       <main className="row full-height">
-        <div className="col-3 p-5 bg-primary text-light">
-          <h4>Tasks</h4>
+        <div className="col-3 p-3 bg-primary text-light">
+          <h4>Tasks MERN</h4>
           <hr></hr>
           <Sidepanel makeActiveList={this.setActiveList} />
         </div>

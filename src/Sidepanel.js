@@ -27,7 +27,7 @@ class Sidepanel extends Component {
   drawToDOM = argObj => (
     <div
       onClick={() => this.props.makeActiveList(argObj.listName)}
-      className="pointer"
+      className="list-group-item pointer mb-2 bg-primary"
     >
       {argObj.listName}
     </div>
@@ -36,14 +36,20 @@ class Sidepanel extends Component {
   render() {
     var items = this.state.databaseRecords;
     return (
-      <div>        
+      <div>
         <div
           onClick={() => this.props.makeActiveList("All Tasks")}
-          className="pointer"
+          className="list-group-item pointer mb-2 bg-primary"
         >
           All Tasks
         </div>
         {items.map(this.drawToDOM)}
+        <div
+          onClick={() => this.props.makeActiveList("Completed")}
+          className="list-group-item pointer mb-2 bg-primary"
+        >
+          Completed
+        </div>
       </div>
     );
   }

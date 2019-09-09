@@ -38,14 +38,19 @@ class Taskbox extends Component {
     var filteredArr = allItems.filter(function(item) {
       return item.associatedList === activeList;
     });
+    var completedItemsArr = allItems.filter(function(item) {
+      return item.completed === true;
+    });
     var arrayToUse;
-    if (activeList !== "All Tasks") {
-      arrayToUse = filteredArr;
-    } else {
+    if (activeList === "All Tasks") {
       arrayToUse = allItems;
+    } else if (activeList === "Completed") {
+      arrayToUse = completedItemsArr;
+    } else {
+      arrayToUse = filteredArr;
     }
     return (
-      <div>
+      <div className="animated slideInRight">
         <h3>{this.props.activeList}</h3>
         <hr></hr>
         <div>{arrayToUse.map(this.drawToDOM)}</div>
