@@ -31,11 +31,14 @@ class Taskbox extends Component {
   );
 
   render() {
-    var items = this.state.databaseRecords;
+    var activeList = this.props.activeList
+    var allItems = this.state.databaseRecords;
+    var filteredArr = allItems.filter(function(item) {
+      return item.associatedList === activeList;
+    });
     return (
       <div>
-        {this.props.activeList}
-        <div>{items.map(this.drawToDOM)}</div>
+        <div>{filteredArr.map(this.drawToDOM)}</div>
       </div>
     );
   }
