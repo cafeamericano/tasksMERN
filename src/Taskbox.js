@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+var incompleteIcon = "far fa-circle ml-2 mr-2"
+var completeIcon = "fas fa-check-circle ml-2 mr-2"
+
 class Taskbox extends Component {
   constructor(props) {
     super(props);
@@ -24,10 +27,10 @@ class Taskbox extends Component {
       });
   }
 
-  drawToDOM = argObj => (
+  drawToDOM = (argObj) => (
     <div className="card p-2 mb-2 shadow">
       <div>
-        <input type="checkbox" /> {argObj.taskName}
+        <i className={incompleteIcon}></i> {argObj.taskName}
       </div>
     </div>
   );
