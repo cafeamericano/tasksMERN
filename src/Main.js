@@ -6,7 +6,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeList: ""
+      activeList: "All Tasks"
     };
     this.setActiveList = this.setActiveList.bind(this);
   }
@@ -23,7 +23,7 @@ class Main extends Component {
           <hr></hr>
           <Sidepanel makeActiveList={this.setActiveList} />
         </div>
-        <div className="col-9 p-5">
+        <div className="col-9 p-5 bg-light">
           <Taskbox activeList={this.state.activeList} />
         </div>
       </main>

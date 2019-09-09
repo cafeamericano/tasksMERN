@@ -25,20 +25,30 @@ class Taskbox extends Component {
   }
 
   drawToDOM = argObj => (
-    <div>
-      <input type="checkbox" /> {argObj.taskName} | {argObj.associatedList}
+    <div className="card p-2 mb-2 shadow">
+      <div>
+        <input type="checkbox" /> {argObj.taskName}
+      </div>
     </div>
   );
 
   render() {
-    var activeList = this.props.activeList
+    var activeList = this.props.activeList;
     var allItems = this.state.databaseRecords;
     var filteredArr = allItems.filter(function(item) {
       return item.associatedList === activeList;
     });
+    var arrayToUse;
+    if (activeList !== "All Tasks") {
+      arrayToUse = filteredArr;
+    } else {
+      arrayToUse = allItems;
+    }
     return (
       <div>
-        <div>{filteredArr.map(this.drawToDOM)}</div>
+        <h3>{this.props.activeList}</h3>
+        <hr></hr>
+        <div>{arrayToUse.map(this.drawToDOM)}</div>
       </div>
     );
   }
