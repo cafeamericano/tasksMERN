@@ -80,6 +80,34 @@
       .bg-primary-dark {
         background: rgb(16, 100, 230);
       }
+      /* From https://alligator.io/react/modal-component/ */
+      .modal-background-react {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 98;
+      }
+      /* From https://alligator.io/react/modal-component/ */
+      .modal-foreground-react {
+        position: fixed;
+        background: white;
+        width: 75%;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        padding: 15px;
+      }
+      .display-block {
+        display: block;
+      }
+      .display-none {
+        display: none;
+      }
     </style>
   </head>
   <body>

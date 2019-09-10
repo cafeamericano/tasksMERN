@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Sidepanel from "./Sidepanel.js";
 import Taskbox from "./Taskbox.js";
+import AddTaskModal from "./AddTaskModal";
 
 class Main extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class Main extends Component {
   render() {
     return (
       <main className="row full-height">
+        <AddTaskModal/>
         <div className="col-3 p-3 bg-primary text-light">
           <h4>Tasks MERN</h4>
           <hr></hr>
