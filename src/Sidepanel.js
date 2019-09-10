@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 var blue = "list-group-item pointer mb-2 bg-primary";
-var dark = "list-group-item pointer mb-2 bg-dark";
+var darkBlue = "list-group-item pointer mb-2 bg-primary-dark";
 
 class Sidepanel extends Component {
   constructor(props) {
@@ -28,16 +28,7 @@ class Sidepanel extends Component {
         });
       });
   }
-
-  drawToDOM = argObj => (
-    <div
-      onClick={() => this.props.makeActiveList(argObj.listName)}
-      className={blue}
-    >
-      {argObj.listName}
-    </div>
-  );
-
+  
   render() {
     //Establish and add to the dataset
     var items = this.state.databaseRecords;
@@ -45,13 +36,12 @@ class Sidepanel extends Component {
     //Create a new arraw to contain the HTML
     var assembledElements = [];
 
-    console.log("ACTIVE LIST IS: " + this.props.activeList);
     for (var i = 0; i < items.length; i++) {
       let x = items[i].listName;
       //Decide on the class
       let classToApply;
       if (x === this.props.activeList) {
-        classToApply = dark;
+        classToApply = darkBlue;
       } else {
         classToApply = blue;
       }
