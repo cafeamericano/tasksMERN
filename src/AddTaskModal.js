@@ -20,7 +20,7 @@ class AddTaskModal extends Component {
     if (this.state.visible) {
       return (
         <div className="modal-background-react">
-          <div className="modal-foreground-react">
+          <div className="modal-foreground-react animated fadeInDown">
             {/* Begin Modal Content */}
             <div class="modal-header">
               <h5 class="modal-title">Add a Task</h5>
