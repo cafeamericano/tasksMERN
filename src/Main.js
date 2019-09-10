@@ -21,7 +21,7 @@ class Main extends Component {
         <div className="col-3 p-3 bg-primary text-light">
           <h4>Tasks MERN</h4>
           <hr></hr>
-          <Sidepanel makeActiveList={this.setActiveList} />
+          <Sidepanel makeActiveList={this.setActiveList} activeList={this.state.activeList}/>
         </div>
         <div className="col-9 p-5 bg-light">
           <Taskbox activeList={this.state.activeList} />
