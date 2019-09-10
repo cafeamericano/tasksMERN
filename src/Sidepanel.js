@@ -12,19 +12,17 @@ class Sidepanel extends Component {
   }
 
   componentDidMount() {
-    this.performSearch();
+    this.performSearchOnDatabase();
   }
 
-  componentDidUpdate() {
-    this.performSearch();
-  }
-
-  performSearch() {
+  performSearchOnDatabase() {
     let url = "/userlists";
     fetch(url)
       .then(response => response.json())
       .then(results => {
         console.log(results);
+        results.unshift({ listName: "All Tasks" }); // Add a standard All Tasks list
+        results.push({ listName: "Completed" }); // Add a standard Completed list
         this.setState({
           databaseRecords: results
         });
@@ -43,13 +41,11 @@ class Sidepanel extends Component {
   render() {
     //Establish and add to the dataset
     var items = this.state.databaseRecords;
-    items.unshift({ listName: "All Tasks" });
-    items.push({ listName: "Completed" });
 
     //Create a new arraw to contain the HTML
     var assembledElements = [];
-    
-    console.log('ACTIVE LIST IS: ' + this.props.activeList)
+
+    console.log("ACTIVE LIST IS: " + this.props.activeList);
     for (var i = 0; i < items.length; i++) {
       let x = items[i].listName;
       //Decide on the class
