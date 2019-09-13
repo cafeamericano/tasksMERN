@@ -27,6 +27,7 @@ class AddTaskModal extends Component {
       })
     }).then(response => {
       console.log(response);
+      this.setState({newTaskName: ""});
       this.props.toggleAddTaskModal();
     });
   }
