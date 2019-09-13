@@ -57,7 +57,9 @@ class ToDoItem extends Component {
             )}
           </div>
           <div className="col-10">{this.props.data.taskName}</div>
-          <div className="col-1" onClick={this.deleteTaskOnDatabase}>X</div>
+          <div className="col-1" onClick={this.deleteTaskOnDatabase}>
+            <i class="fas fa-times"></i>
+          </div>
         </div>
       </section>
     );
