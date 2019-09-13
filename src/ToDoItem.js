@@ -48,14 +48,13 @@ class ToDoItem extends Component {
   }
 
   removeTask() {
-    this.deleteTaskOnDatabase();
+    this.setState({ animationClass: "animated fadeOutRight" });
+    setTimeout(() => this.deleteTaskOnDatabase(), 500);
   }
 
   render() {
     return (
-      <div
-        className={this.state.animationClass}
-      >
+      <div className={this.state.animationClass}>
         <section className="card mb-2 p-2 ">
           <div className="row">
             <div className="col-1 text-left" onClick={this.toggleCompletion}>
