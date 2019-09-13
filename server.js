@@ -1,10 +1,11 @@
 var express = require("express");
 var mongoose = require("mongoose");
+var path = require("path");
 var app = express();
 
 var PORT = process.env.PORT || 7000;
 
-//Middleware
+//Body parser middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -17,10 +18,7 @@ mongoose.connect(dbURL, {
   useNewUrlParser: true
 });
 
-app.get("/", function(req, res) {
-  console.log('home route hit')
-  res.send('hello world')
-});
+// API ROUTES /////////////////////////////////////
 
 app.get("/usertasks", function(req, res) {
   db.Task.find({})
@@ -69,6 +67,14 @@ app.delete("/delete", function(req, res) {
     .catch(function(err) {
       console.log(err);
     });
+});
+
+// PAGE SERVE ROUTES /////////////////////////////////////
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, function() {
