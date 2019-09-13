@@ -20,6 +20,7 @@ mongoose.connect(dbURL, {
 
 app.get("/usertasks", function(req, res) {
   db.Task.find({})
+    .sort({ completed: 1 })
     .then(function(queryResult) {
       res.json(queryResult);
     })
@@ -29,7 +30,7 @@ app.get("/usertasks", function(req, res) {
 });
 
 app.post("/addtask", function(req, res) {
-  console.log(req.body)
+  console.log(req.body);
   db.Task.create({
     completed: false,
     taskName: req.body.taskName
