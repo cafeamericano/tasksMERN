@@ -5,7 +5,7 @@ class AddTaskModal extends Component {
     super(props);
     this.state = {
       visible: this.props.visibility,
-      newTaskName: "",
+      newTaskName: ""
     };
     this.addTaskToDatabase = this.addTaskToDatabase.bind(this);
   }
@@ -17,14 +17,18 @@ class AddTaskModal extends Component {
     }
   }
 
-  addTaskToDatabase() {
+  addTaskToDatabase(event) {
+    event.preventDefault();
     return fetch("/addtask", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         taskName: this.state.newTaskName
       })
-    }).then(response => console.log(response));
+    }).then(response => {
+      console.log(response);
+      this.props.toggleAddTaskModal();
+    });
   }
 
   updateInputValue_taskName = event => {
@@ -37,45 +41,27 @@ class AddTaskModal extends Component {
       return (
         <div className="modal-background-react">
           <div className="modal-foreground-react animated fadeInDown">
-            {/* Begin Modal Content */}
-            <div class="modal-header">
-              <h5 class="modal-title">Add a Task</h5>
-            </div>
-            <div class="modal-body">
-              <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">
-                  Task Name
-                </label>
-                <div class="col-sm-10">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Task name"
-                    value={this.state.newTaskName}
-                    onChange={this.updateInputValue_taskName}
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                onClick={this.props.toggleAddTaskModal}
-              >
-                Close
-              </button>
-              <div onClick={this.props.toggleAddTaskModal}>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  onClick={this.addTaskToDatabase}
+            <form onSubmit={this.addTaskToDatabase} className="row">
+              <label>Task Name</label>
+              <input
+                type="text"
+                class="form-control mb-3"
+                placeholder="Enter a new task"
+                value={this.state.newTaskName}
+                onChange={this.updateInputValue_taskName}
+              />
+              <div className="text-right full-width">
+                <span
+                  className="btn btn-secondary mr-2"
+                  onClick={this.props.toggleAddTaskModal}
                 >
-                  Save changes
+                  Cancel
+                </span>
+                <button type="submit" className="btn btn-primary mr-2">
+                  Submit
                 </button>
               </div>
-            </div>
-            {/* End Modal Content */}
+            </form>
           </div>
         </div>
       );

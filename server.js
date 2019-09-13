@@ -29,6 +29,7 @@ app.get("/usertasks", function(req, res) {
 });
 
 app.post("/addtask", function(req, res) {
+  console.log(req.body)
   db.Task.create({
     completed: false,
     taskName: req.body.taskName
