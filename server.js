@@ -38,7 +38,22 @@ app.get("/usertasks", function(req, res) {
     });
 });
 
-app.post("/update", function(req, res) {
+app.post("/addtask", function(req, res) {
+  db.Task.create({
+    associatedList: req.body.associatedList,
+    completed: false,
+    taskName: req.body.taskName
+  })
+    .then(function(task) {
+      console.log(task);
+      res.send("Added task.");
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+});
+
+app.put("/update", function(req, res) {
   console.log(req.body);
   db.Task.update(
     { _id: req.body.taskId },

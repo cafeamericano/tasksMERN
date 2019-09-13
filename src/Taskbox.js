@@ -13,6 +13,10 @@ class Taskbox extends Component {
     this.performSearch();
   }
 
+  componentDidUpdate() {
+    this.performSearch();
+  }
+
   performSearch() {
     let url = "/usertasks";
     fetch(url)

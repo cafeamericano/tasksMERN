@@ -24,7 +24,7 @@ class ToDoItem extends Component {
     console.log(taskId);
     console.log(completionStatus);
     return fetch("/update", {
-      method: "post",
+      method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         taskId: taskId,
