@@ -65,6 +65,17 @@ app.put("/update", function(req, res) {
   );
 });
 
+app.delete("/delete", function(req, res) {
+  db.Task.remove({ _id: req.body.taskId })
+    .then(function(task) {
+      console.log(task);
+      res.send("Deleted task.");
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+});
+
 app.listen(PORT, function() {
   console.log("App listening on port " + PORT);
 });

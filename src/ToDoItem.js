@@ -5,9 +5,11 @@ class ToDoItem extends Component {
     super(props);
     this.state = {
       visible: true,
-      completed: this.props.data.completed
+      completed: this.props.data.completed,
+      taskId: this.props.data._id
     };
     this.toggleCompletion = this.toggleCompletion.bind(this);
+    this.deleteTaskOnDatabase = this.deleteTaskOnDatabase.bind(this);
   }
 
   toggleCompletion() {
@@ -33,18 +35,31 @@ class ToDoItem extends Component {
     }).then(response => console.log(response));
   }
 
+  deleteTaskOnDatabase() {
+    return fetch("/delete", {
+      method: "delete",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        taskId: this.state.taskId
+      })
+    }).then(response => console.log(response));
+  }
+
   render() {
     return (
-      <div className="row mb-2">
-        <div className="col-1 text-left" onClick={this.toggleCompletion}>
-          {this.state.completed ? (
-            <i class="far fa-check-circle fa-lg"></i>
-          ) : (
-            <i class="far fa-circle fa-lg"></i>
-          )}
+      <section className="card mb-2 p-2">
+        <div className="row">
+          <div className="col-1 text-left" onClick={this.toggleCompletion}>
+            {this.state.completed ? (
+              <i class="far fa-check-circle fa-lg"></i>
+            ) : (
+              <i class="far fa-circle fa-lg"></i>
+            )}
+          </div>
+          <div className="col-10">{this.props.data.taskName}</div>
+          <div className="col-1" onClick={this.deleteTaskOnDatabase}>X</div>
         </div>
-        <div className="col-11">{this.props.data.taskName}</div>
-      </div>
+      </section>
     );
   }
 }
