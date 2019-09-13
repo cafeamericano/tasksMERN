@@ -31,7 +31,7 @@ class Main extends Component {
           visibility={this.state.visible_AddTaskModal}
           toggleAddTaskModal={this.toggleAddTaskModal}
         />
-        <div className="p-3">
+        <div className="p-3 animated fadeInUpBig">
           <Taskbox />
         </div>
       </main>
