@@ -21,8 +21,10 @@ class ToDoItem extends Component {
   }
 
   updateCompletionStatusOnDatabase(taskId, completionStatus) {
+    console.log(taskId)
+    console.log(completionStatus)
     return fetch("/update", {
-      method: "PUT",
+      method: "POST",
       body: { taskId: taskId, completionStatus: completionStatus }
     }).then(response => console.log(response));
   }
