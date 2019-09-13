@@ -21,11 +21,15 @@ class ToDoItem extends Component {
   }
 
   updateCompletionStatusOnDatabase(taskId, completionStatus) {
-    console.log(taskId)
-    console.log(completionStatus)
+    console.log(taskId);
+    console.log(completionStatus);
     return fetch("/update", {
-      method: "POST",
-      body: { taskId: taskId, completionStatus: completionStatus }
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        taskId: taskId,
+        completionStatus: completionStatus
+      })
     }).then(response => console.log(response));
   }
 
