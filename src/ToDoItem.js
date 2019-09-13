@@ -64,7 +64,13 @@ class ToDoItem extends Component {
                 <i className="far fa-circle fa-lg"></i>
               )}
             </div>
-            <div className="col-10">{this.props.data.taskName}</div>
+            <div className="col-10">
+              {this.state.completed ? (
+                <strike>{this.props.data.taskName}</strike>
+              ) : (
+                <span>{this.props.data.taskName}</span>
+              )}
+            </div>
             <div className="col-1 text-right" onClick={this.removeTask}>
               <i className="fas fa-times"></i>
             </div>
