@@ -20,6 +20,10 @@ mongoose.connect(dbURL, {
   useNewUrlParser: true
 });
 
+//Serve up the React application
+app.use(express.static(path.resolve(__dirname, "build")));
+
+//Pull JSON for tasks
 app.get("/usertasks", function(req, res) {
   db.Task.find({})
     .sort({ completed: 1 })
@@ -31,6 +35,7 @@ app.get("/usertasks", function(req, res) {
     });
 });
 
+//Add a new task
 app.post("/addtask", function(req, res) {
   console.log(req.body);
   db.Task.create({
@@ -46,6 +51,7 @@ app.post("/addtask", function(req, res) {
     });
 });
 
+//Update a task
 app.put("/update", function(req, res) {
   console.log(req.body);
   db.Task.update(
@@ -58,6 +64,7 @@ app.put("/update", function(req, res) {
   );
 });
 
+//Delete a task
 app.delete("/delete", function(req, res) {
   db.Task.remove({ _id: req.body.taskId })
     .then(function(task) {
@@ -69,10 +76,12 @@ app.delete("/delete", function(req, res) {
     });
 });
 
+//For any other path, serve up the index.html file
 app.get("*", function(req, res) {
   res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
+//Start server
 app.listen(PORT, function() {
   console.log("App listening on port " + PORT);
 });
