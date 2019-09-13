@@ -27,7 +27,7 @@ class AddTaskModal extends Component {
       })
     }).then(response => {
       console.log(response);
-      this.setState({newTaskName: ""});
+      this.setState({ newTaskName: "" });
       this.props.toggleAddTaskModal();
     });
   }
@@ -45,6 +45,7 @@ class AddTaskModal extends Component {
             <form onSubmit={this.addTaskToDatabase} className="row">
               <label>Task Name</label>
               <input
+                autoFocus
                 type="text"
                 className="form-control mb-3"
                 placeholder="Enter a new task"
