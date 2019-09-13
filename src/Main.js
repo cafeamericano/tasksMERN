@@ -27,24 +27,16 @@ class Main extends Component {
   }
   render() {
     return (
-      <main className="row full-height">
+      <main className="full-height bg-light">
+        <nav class="navbar navbar-dark bg-primary">
+          <span class="navbar-brand mb-0 h1">TasksMERN</span>
+          <div onClick={this.toggleAddTaskModal}><i class="far fa-plus-square text-light fa-2x"></i></div>
+        </nav>
         <AddTaskModal
           visibility={this.state.visible_AddTaskModal}
           toggleAddTaskModal={this.toggleAddTaskModal}
         />
-        <div className="col-3 p-3 bg-primary text-light">
-          <h4>Tasks MERN</h4>
-          <hr></hr>
-          <div className="text-center" onClick={this.toggleAddTaskModal}>
-            <i class="fas fa-plus-circle fa-3x"></i>
-          </div>
-          <hr></hr>
-          <Sidepanel
-            makeActiveList={this.setActiveList}
-            activeList={this.state.activeList}
-          />
-        </div>
-        <div className="col-9 p-5 bg-light">
+        <div className='p-3'>
           <Taskbox activeList={this.state.activeList} />
         </div>
       </main>
