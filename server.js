@@ -18,16 +18,6 @@ mongoose.connect(dbURL, {
   useNewUrlParser: true
 });
 
-let userLists = [
-  { listName: "Household" },
-  { listName: "Groceries" },
-  { listName: "Bills" }
-];
-
-app.get("/userlists", function(req, res) {
-  res.json(userLists);
-});
-
 app.get("/usertasks", function(req, res) {
   db.Task.find({})
     .then(function(queryResult) {
@@ -40,7 +30,6 @@ app.get("/usertasks", function(req, res) {
 
 app.post("/addtask", function(req, res) {
   db.Task.create({
-    associatedList: req.body.associatedList,
     completed: false,
     taskName: req.body.taskName
   })

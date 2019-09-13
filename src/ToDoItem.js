@@ -6,9 +6,11 @@ class ToDoItem extends Component {
     this.state = {
       visible: true,
       completed: this.props.data.completed,
-      taskId: this.props.data._id
+      taskId: this.props.data._id,
+      animationClass: ""
     };
     this.toggleCompletion = this.toggleCompletion.bind(this);
+    this.removeTask = this.removeTask.bind(this);
     this.deleteTaskOnDatabase = this.deleteTaskOnDatabase.bind(this);
   }
 
@@ -23,8 +25,6 @@ class ToDoItem extends Component {
   }
 
   updateCompletionStatusOnDatabase(taskId, completionStatus) {
-    console.log(taskId);
-    console.log(completionStatus);
     return fetch("/update", {
       method: "put",
       headers: { "Content-Type": "application/json" },
@@ -42,26 +42,36 @@ class ToDoItem extends Component {
       body: JSON.stringify({
         taskId: this.state.taskId
       })
-    }).then(response => console.log(response));
+    }).then(response => {
+      console.log(response);
+    });
+  }
+
+  removeTask() {
+    this.deleteTaskOnDatabase();
   }
 
   render() {
     return (
-      <section className="card mb-2 p-2">
-        <div className="row">
-          <div className="col-1 text-left" onClick={this.toggleCompletion}>
-            {this.state.completed ? (
-              <i class="far fa-check-circle fa-lg"></i>
-            ) : (
-              <i class="far fa-circle fa-lg"></i>
-            )}
+      <div
+        className={this.state.animationClass}
+      >
+        <section className="card mb-2 p-2 ">
+          <div className="row">
+            <div className="col-1 text-left" onClick={this.toggleCompletion}>
+              {this.state.completed ? (
+                <i class="far fa-check-circle fa-lg"></i>
+              ) : (
+                <i class="far fa-circle fa-lg"></i>
+              )}
+            </div>
+            <div className="col-10">{this.props.data.taskName}</div>
+            <div className="col-1 text-right" onClick={this.removeTask}>
+              <i class="fas fa-times"></i>
+            </div>
           </div>
-          <div className="col-10">{this.props.data.taskName}</div>
-          <div className="col-1" onClick={this.deleteTaskOnDatabase}>
-            <i class="fas fa-times"></i>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     );
   }
 }

@@ -6,7 +6,6 @@ class AddTaskModal extends Component {
     this.state = {
       visible: this.props.visibility,
       newTaskName: "",
-      newAssociatedList: ""
     };
     this.addTaskToDatabase = this.addTaskToDatabase.bind(this);
   }
@@ -23,18 +22,13 @@ class AddTaskModal extends Component {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        taskName: this.state.newTaskName,
-        associatedList: this.state.newAssociatedList
+        taskName: this.state.newTaskName
       })
     }).then(response => console.log(response));
   }
 
   updateInputValue_taskName = event => {
     this.setState({ newTaskName: event.target.value });
-  };
-
-  updateInputValue_associatedList = event => {
-    this.setState({ newAssociatedList: event.target.value });
   };
 
   render() {
@@ -59,18 +53,6 @@ class AddTaskModal extends Component {
                     placeholder="Task name"
                     value={this.state.newTaskName}
                     onChange={this.updateInputValue_taskName}
-                  />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-sm-2 col-form-label">List Name</label>
-                <div class="col-sm-10">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="List name"
-                    value={this.state.newAssociatedList}
-                    onChange={this.updateInputValue_associatedList}
                   />
                 </div>
               </div>
