@@ -60,14 +60,14 @@ class ToDoItem extends Component {
           <div className="row">
             <div className="col-1 text-left" onClick={this.toggleCompletion}>
               {this.state.completed ? (
-                <i class="far fa-check-circle fa-lg"></i>
+                <i className="far fa-check-circle fa-lg"></i>
               ) : (
-                <i class="far fa-circle fa-lg"></i>
+                <i className="far fa-circle fa-lg"></i>
               )}
             </div>
             <div className="col-10">{this.props.data.taskName}</div>
             <div className="col-1 text-right" onClick={this.removeTask}>
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </div>
           </div>
         </section>

@@ -46,7 +46,7 @@ class AddTaskModal extends Component {
               <label>Task Name</label>
               <input
                 type="text"
-                class="form-control mb-3"
+                className="form-control mb-3"
                 placeholder="Enter a new task"
                 value={this.state.newTaskName}
                 onChange={this.updateInputValue_taskName}

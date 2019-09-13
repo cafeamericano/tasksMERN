@@ -21,10 +21,10 @@ class Main extends Component {
   render() {
     return (
       <main className="full-height bg-light">
-        <nav class="navbar navbar-dark bg-primary">
-          <span class="navbar-brand mb-0 h1">TasksMERN I</span>
+        <nav className="navbar navbar-dark bg-primary">
+          <span className="navbar-brand mb-0 h1">TasksMERN I</span>
           <div onClick={this.toggleAddTaskModal}>
-            <i class="far fa-plus-square text-light fa-2x"></i>
+            <i className="far fa-plus-square text-light fa-2x"></i>
           </div>
         </nav>
         <AddTaskModal

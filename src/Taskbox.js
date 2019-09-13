@@ -31,8 +31,8 @@ class Taskbox extends Component {
   }
 
   render() {
-    let stuff = this.state.databaseRecords.map(item => (
-      <ToDoItem data={item} />
+    let stuff = this.state.databaseRecords.map((item, i) => (
+      <ToDoItem key={item._id} data={item} />
     ));
     return stuff;
   }
