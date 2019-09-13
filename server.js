@@ -1,10 +1,12 @@
 var express = require("express");
 var mongoose = require("mongoose");
+const cors = require("cors");
 var app = express();
 
 var PORT = process.env.PORT || 7000;
 
 //Middleware
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
