@@ -39,25 +39,25 @@ class AddTaskModal extends Component {
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label">
-                  List Name
-                </label>
+                <label class="col-sm-2 col-form-label">List Name</label>
                 <div class="col-sm-10">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="List"
-                  />
+                  <input type="text" class="form-control" placeholder="List" />
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" onClick={this.props.toggleAddTaskModal}>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onClick={this.props.toggleAddTaskModal}
+              >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
+              <div onClick={this.props.toggleAddTaskModal}>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
             </div>
             {/* End Modal Content */}
           </div>
