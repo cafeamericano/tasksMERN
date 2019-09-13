@@ -7,7 +7,6 @@ var PORT = process.env.PORT || 7000;
 //Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
 
 //Import DB models
 var db = require("./models");
@@ -16,6 +15,11 @@ var db = require("./models");
 var dbURL = process.env.MONGODB_URI || "mongodb://localhost/tasksmern";
 mongoose.connect(dbURL, {
   useNewUrlParser: true
+});
+
+app.get("/", function(req, res) {
+  console.log('home route hit')
+  res.send('hello world')
 });
 
 app.get("/usertasks", function(req, res) {
