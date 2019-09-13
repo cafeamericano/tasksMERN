@@ -69,6 +69,10 @@ app.delete("/delete", function(req, res) {
     });
 });
 
+app.get("*", function(req, res) {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
+
 app.listen(PORT, function() {
   console.log("App listening on port " + PORT);
 });
